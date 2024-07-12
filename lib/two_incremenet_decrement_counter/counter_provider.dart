@@ -5,12 +5,12 @@ class CounterProvider extends ChangeNotifier {
 
   int value;
 
-  void incrementCounter() async {
+  void incrementCounter() {
     value++;
     notifyListeners();
   }
 
-  void decrementCounter() async {
+  void decrementCounter() {
     value--;
     notifyListeners();
   }

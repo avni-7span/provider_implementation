@@ -14,6 +14,12 @@ class _ScreenOneState extends State<ScreenOne> {
   TextEditingController dataController = TextEditingController();
 
   @override
+  void dispose() {
+    dataController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,34 +30,32 @@ class _ScreenOneState extends State<ScreenOne> {
         backgroundColor: Colors.deepPurple,
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: dataController,
-                decoration: const InputDecoration(
-                    hintText: 'Enter Data', border: OutlineInputBorder()),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: dataController,
+              decoration: const InputDecoration(
+                hintText: 'Enter Data',
+                border: OutlineInputBorder(),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    context
-                        .read<UserProvider>()
-                        .changeUserData(newUserData: dataController.text);
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ScreenTwo(),
-                    ));
-                  },
-                  child: const Icon(
-                    Icons.send,
-                    color: Colors.black,
-                  ))
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context
+                    .read<UserProvider>()
+                    .changeUserData(newUserData: dataController.text);
+
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const ScreenTwo(),
+                  ),
+                );
+              },
+              child: const Icon(Icons.send, color: Colors.black),
+            ),
+          ],
         ),
       ),
     );

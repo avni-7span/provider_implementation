@@ -4,7 +4,7 @@ class UserProvider extends ChangeNotifier {
   UserProvider({this.userName});
   String? userName;
 
-  void changeUserData({required String newUserData}) async {
+  void changeUserData({required String newUserData}) {
     userName = newUserData;
     notifyListeners();
   }
