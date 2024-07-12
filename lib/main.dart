@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_package_implemenatation/one_textdata_passing/user_provider.dart';
+import 'package:provider_package_implemenatation/two_incremenet_decrement_counter/counter_provider.dart';
+import 'package:provider_package_implemenatation/two_incremenet_decrement_counter/home_screen.dart';
 
 import 'one_textdata_passing/screen_one.dart';
 
@@ -17,10 +19,13 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CounterProvider(),
         )
       ],
-      child: MaterialApp(
-        home: ScreenOne(),
+      child: const MaterialApp(
+        home: HomeScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
